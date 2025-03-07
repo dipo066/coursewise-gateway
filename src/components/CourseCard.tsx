@@ -28,7 +28,7 @@ const CourseCard = ({
   promotional
 }: CourseCardProps) => {
   const [imageLoaded, setImageLoaded] = useState(false);
-  return <Link to={`/courses/${id}`}>
+  return <Link to={`/courses/${id}`} className="anggur">
       <Card className="overflow-hidden hover-scale h-full flex flex-col">
         <div className="relative aspect-video overflow-hidden">
           <img src={image} alt={title} className={`w-full h-full object-cover transition-all duration-500 ${imageLoaded ? 'img-loaded' : 'img-loading'}`} onLoad={() => setImageLoaded(true)} />
@@ -41,7 +41,7 @@ const CourseCard = ({
         </div>
         <CardContent className="flex-grow p-5">
           <h3 className="font-semibold text-lg mb-2 line-clamp-2">{title}</h3>
-          <p className="text-muted-foreground text-sm mb-4">by {instructor}</p>
+          
           
           <div className="flex items-center gap-1 mb-2">
             <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
@@ -58,10 +58,8 @@ const CourseCard = ({
         </CardContent>
         <CardFooter className="px-5 py-4 border-t bg-secondary/50">
           <div className="w-full flex justify-between items-center">
-            <span className="font-semibold text-lg">${price.toFixed(2)}</span>
-            <Badge variant="outline" className="text">
-              View Course
-            </Badge>
+            
+            
           </div>
         </CardFooter>
       </Card>
