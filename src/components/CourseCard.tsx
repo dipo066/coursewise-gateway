@@ -1,10 +1,8 @@
-
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Star, Clock, Users } from "lucide-react";
-
 export interface CourseCardProps {
   id: string;
   title: string;
@@ -17,38 +15,26 @@ export interface CourseCardProps {
   price: number;
   promotional?: boolean;
 }
-
-const CourseCard = ({ 
-  id, 
-  title, 
-  instructor, 
-  category, 
-  rating, 
-  students, 
-  duration, 
-  image, 
+const CourseCard = ({
+  id,
+  title,
+  instructor,
+  category,
+  rating,
+  students,
+  duration,
+  image,
   price,
-  promotional 
+  promotional
 }: CourseCardProps) => {
   const [imageLoaded, setImageLoaded] = useState(false);
-
-  return (
-    <Link to={`/courses/${id}`}>
+  return <Link to={`/courses/${id}`}>
       <Card className="overflow-hidden hover-scale h-full flex flex-col">
         <div className="relative aspect-video overflow-hidden">
-          <img
-            src={image}
-            alt={title}
-            className={`w-full h-full object-cover transition-all duration-500 ${
-              imageLoaded ? 'img-loaded' : 'img-loading'
-            }`}
-            onLoad={() => setImageLoaded(true)}
-          />
-          {promotional && (
-            <Badge className="absolute top-3 right-3 bg-primary text-white">
+          <img src={image} alt={title} className={`w-full h-full object-cover transition-all duration-500 ${imageLoaded ? 'img-loaded' : 'img-loading'}`} onLoad={() => setImageLoaded(true)} />
+          {promotional && <Badge className="absolute top-3 right-3 bg-primary text-white">
               Featured
-            </Badge>
-          )}
+            </Badge>}
           <Badge variant="secondary" className="absolute top-3 left-3">
             {category}
           </Badge>
@@ -73,14 +59,12 @@ const CourseCard = ({
         <CardFooter className="px-5 py-4 border-t bg-secondary/50">
           <div className="w-full flex justify-between items-center">
             <span className="font-semibold text-lg">${price.toFixed(2)}</span>
-            <Badge variant="outline" className="text-primary border-primary">
+            <Badge variant="outline" className="text">
               View Course
             </Badge>
           </div>
         </CardFooter>
       </Card>
-    </Link>
-  );
+    </Link>;
 };
-
 export default CourseCard;
